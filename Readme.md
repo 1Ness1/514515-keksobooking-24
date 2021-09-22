@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
-* Студент: [Oleg Berlo](https://up.htmlacademy.ru/javascript/24/user/514515).
-* Наставник: `Неизвестно`.
+- Студент: [Oleg Berlo](https://up.htmlacademy.ru/javascript/24/user/514515).
+- Наставник: `Rail`.
 
 ---
 
