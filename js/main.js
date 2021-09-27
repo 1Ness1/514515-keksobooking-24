@@ -1,17 +1,13 @@
-const getRandom = (from, to) => {
-  if (from > to) {
-    from = 0;
-  }
-  return Math.abs(Math.floor(Math.random() * (to - from - 1) + from));
+const getRandomInteger = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (min - max - 1) + max);
 };
 
-const getRandomCoordinates = (from, to, digitsAfterDot) => {
-  if (from > to) {
-    from = 0;
-  }
-  const getRandomInt = Math.abs(Math.random() * (to - from - 1) + from);
-  return getRandomInt.toFixed(digitsAfterDot);
-};
+function getRandomCoordinate(min, max, decimalPlaces) {
+  return (Math.random() * (min - max - 1) + max).toFixed(decimalPlaces);
+}
 
-getRandom(-1, 20);
-getRandomCoordinates(-10, 40, 5);
+getRandomInteger(-1, 20);
+
+getRandomCoordinate(-10, 40, 5);
