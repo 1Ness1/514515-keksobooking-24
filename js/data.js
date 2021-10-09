@@ -2,34 +2,34 @@ import {
   getRandomCoordinate,
   getRandomInteger,
   getRandomArrayElement,
-  getRandomElementsFromArray,
-} from "./utils.js";
+  getRandomElementsFromArray
+} from './utils.js';
 
-const housingTypes = ["palace", "flat", "house", "bungalow", "hotel"];
+const housingTypes = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 
 const textList = [
-  "Mystery of the Scarred Mermaid",
-  "Year of Menace",
-  "Xeno Chaos",
-  "The Blood Gate",
-  "Unleash the Future",
-  "The Yellow Piano",
-  "Clue of the Absent Pyramid",
+  'Mystery of the Scarred Mermaid',
+  'Year of Menace',
+  'Xeno Chaos',
+  'The Blood Gate',
+  'Unleash the Future',
+  'The Yellow Piano',
+  'Clue of the Absent Pyramid',
 ];
 
 const featuresList = [
-  "wifi",
-  "dishwasher",
-  "parking",
-  "washer",
-  "elevator",
-  "conditioner",
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
+  'conditioner',
 ];
 
 const photos = [
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg",
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg",
-  "https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg",
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
 function createOffer() {
@@ -42,7 +42,7 @@ function createOffer() {
     author: {
       avatar: `img/avatars/user${getRandomInteger(1, 10)
         .toString()
-        .padStart(2, "0")}.png`,
+        .padStart(2, '0')}.png`,
     },
     offer: {
       title: getRandomArrayElement(textList),
@@ -61,4 +61,4 @@ function createOffer() {
   };
 }
 
-export { createOffer };
+export {createOffer};

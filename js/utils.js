@@ -37,5 +37,5 @@ export {
   getRandomCoordinate,
   getRandomInteger,
   getRandomArrayElement,
-  getRandomElementsFromArray,
+  getRandomElementsFromArray
 };
