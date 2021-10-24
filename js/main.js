@@ -1,4 +1,3 @@
-import { createOffer } from './data.js';
+// import { createOffers } from './data.js';
 // Delete as data appears
-
-Array.from({ length: 10 }, createOffer);
+import './render.js';
