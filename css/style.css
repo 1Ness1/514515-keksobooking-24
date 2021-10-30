@@ -124,6 +124,10 @@ fieldset {
   pointer-events: none;
 }
 
+.popup--disabled {
+  display: none;
+}
+
 .map__filter {
   height: 30px;
   margin-right: 10px;

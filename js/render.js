@@ -1,5 +1,4 @@
 import { createOffers } from './data.js';
-
 const cardTemplate = document
   .querySelector('#card')
   .content.querySelector('.popup');
