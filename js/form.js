@@ -89,11 +89,83 @@ const setFormCapacity = () => {
 
 setFormCapacity();
 
-const onAdFormRoomNumberChange = () => {
+const onFormRoomNumberChange = () => {
   setFormCapacity();
 };
 
-formRoomNumber.addEventListener('change', onAdFormRoomNumberChange);
+formRoomNumber.addEventListener('change', onFormRoomNumberChange);
+
+
+const inputPrice = form.querySelector('#price');
+
+const getValidityListMap = () => ({
+  valueMissing: 'Обязательное поле',
+  badInput: 'Пожалуйста, введите число',
+  rangeUnderflow: `Пожалуйста, не меньше ${inputPrice.min}`,
+  rangeOverflow: `Пожалуйста, не больше ${inputPrice.max}`,
+});
+const validationPrice = () => {
+  const validityListMap = getValidityListMap();
+  const errorKey = Object.keys(validityListMap).find((key) => inputPrice.validity[key]);
+  inputPrice.setCustomValidity(errorKey ? validityListMap[errorKey] : '');
+};
+
+const onInputPriceCheckValidity = () => {
+  validationPrice();
+};
+
+const onInputPriceSetCustomValidity = () => {
+  validationPrice();
+};
+
+const mapTypeToPrice = {
+  bungalow: 0,
+  flat: 1000,
+  hotel: 3000,
+  house: 5000,
+  palace: 10000,
+};
+
+const setMinPrice = (minPrice) => {
+  inputPrice.setAttribute('min', minPrice);
+  inputPrice.setAttribute('placeholder', minPrice);
+};
+
+const selectType = form.querySelector('#type');
+
+let minCost = mapTypeToPrice[selectType.value];
+
+setMinPrice(minCost);
+
+
+const onSelectTypeChange = () => {
+  minCost = mapTypeToPrice[selectType.value];
+  setMinPrice(minCost);
+};
+
+
+const selectCheckIn = form.querySelector('#timein');
+const selectCheckOut = form.querySelector('#timeout');
+
+const changeCheckIn = (checkIn) => {
+  selectCheckIn.value = checkIn;
+};
+const changeCheckOut = (checkOut) => {
+  selectCheckOut.value = checkOut;
+};
+const onSelectCheckInChange = () => {
+  changeCheckOut(selectCheckIn.value);
+};
+
+const onSelectCheckOutChange = () => {
+  changeCheckIn(selectCheckOut.value);
+};
+inputPrice.addEventListener('invalid', onInputPriceCheckValidity);
+inputPrice.addEventListener('input', onInputPriceSetCustomValidity);
+selectType.addEventListener('change', onSelectTypeChange);
+selectCheckIn.addEventListener('change', onSelectCheckInChange);
+selectCheckOut.addEventListener('change', onSelectCheckOutChange);
+
 
 deactivateForm();
 activateForm();
