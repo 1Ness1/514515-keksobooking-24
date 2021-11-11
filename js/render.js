@@ -54,4 +54,81 @@ createCard.forEach((card) => {
   });
 });
 
-mapCanvas.appendChild(cardElement);
+const map = L.map(mapCanvas).setView({
+  lat: 59.96831,
+  lng: 30.31748,
+}, 10);
+
+L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  },
+).addTo(map);
+
+const mainPinIcon = L.icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
+
+
+const mainPinMarker = L.marker(
+  {
+    lat: 59.96831,
+    lng: 30.31748,
+  },
+  {
+    draggable: true,
+    icon: mainPinIcon,
+  },
+);
+
+mainPinMarker.addTo(map);
+
+mainPinMarker.on('moveend', (evt) => {
+  console.log(evt.target.getLatLng());
+});
+
+
+const points = [
+  {
+    title: 'Футура',
+    lat: 59.96925,
+    lng: 30.31730,
+  },
+  {
+    title: 'Шаверма',
+    lat: 59.96783,
+    lng: 30.31258,
+  },
+  {
+    title: 'Франк',
+    lat: 59.95958,
+    lng: 30.30228,
+  },
+  {
+    title: 'Ginza',
+    lat: 59.97292,
+    lng: 30.31982,
+  },
+];
+
+// console.log(createCard);
+
+// Array.from(createOffers, 5).forEach(({lon, lat}) => {
+//   const {lon, lat} = location
+//   const icon = L.icon({
+//     iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
+//     iconSize: [40, 40],
+//     iconAnchor: [20, 40],
+//   });
+//   const marker = L.marker({
+//     lot,
+//     lat,
+//   });
+
+//   marker.addTo(map);
+// });
+
+// mapCanvas.appendChild(cardElement);
