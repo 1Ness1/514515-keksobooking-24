@@ -61,5 +61,5 @@ function createOffer() {
   };
 }
 
-const createOffers = () => Array.from({ length: 1 }, createOffer);
+const createOffers = (count = 10) => Array.from({ length: count }, createOffer);
 export { createOffers };
