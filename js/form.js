@@ -1,10 +1,10 @@
-const mapCanvas = document.querySelector('.map__canvas');
-const popup = mapCanvas.querySelector('.popup');
 const mainForm = document.querySelector('.ad-form');
 const getFields = mainForm.querySelectorAll('.ad-form__element');
 const mapForm = document.querySelector('.map__filters');
 const inputs = mapForm.querySelector('.map__features');
 const form = document.querySelector('.ad-form');
+const formAddress = form.querySelector('#address');
+
 const formTitle = form.querySelector('#title');
 const formPrice = form.querySelector('#price');
 const selectCheckIn = form.querySelector('#timein');
@@ -148,6 +148,8 @@ selectType.addEventListener('change', onSelectTypeChange);
 selectCheckIn.addEventListener('change', onSelectCheckInChange);
 selectCheckOut.addEventListener('change', onSelectCheckOutChange);
 
-
-deactivateForm();
-activateForm();
+export  {
+  deactivateForm,
+  activateForm,
+  formAddress
+};

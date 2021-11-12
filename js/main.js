@@ -1,5 +1,11 @@
-// import { createOffers } from './data.js';
-// Delete as data appears
+import { createOffers } from './data.js';
+import {activateForm, deactivateForm} from './form.js';
+import { initMap } from './map.js';
 
-import './render.js';
-import './form.js';
+const offers = createOffers(5);
+
+deactivateForm();
+
+initMap(offers, () => {
+  activateForm();
+});

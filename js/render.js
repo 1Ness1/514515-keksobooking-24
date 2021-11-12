@@ -3,7 +3,7 @@ const cardTemplate = document
   .querySelector('#card')
   .content.querySelector('.popup');
 
-const mapCanvas = document.querySelector('#map-canvas');
+
 const createCard = createOffers();
 
 const offerType = {
@@ -54,65 +54,10 @@ createCard.forEach((card) => {
   });
 });
 
-const map = L.map(mapCanvas).setView({
-  lat: 59.96831,
-  lng: 30.31748,
-}, 10);
+export {
+  createCard
+};
 
-L.tileLayer(
-  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-  {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  },
-).addTo(map);
-
-const mainPinIcon = L.icon({
-  iconUrl: 'img/pin.svg',
-  iconSize: [52, 52],
-  iconAnchor: [26, 52],
-});
-
-
-const mainPinMarker = L.marker(
-  {
-    lat: 59.96831,
-    lng: 30.31748,
-  },
-  {
-    draggable: true,
-    icon: mainPinIcon,
-  },
-);
-
-mainPinMarker.addTo(map);
-
-mainPinMarker.on('moveend', (evt) => {
-  console.log(evt.target.getLatLng());
-});
-
-
-const points = [
-  {
-    title: 'Футура',
-    lat: 59.96925,
-    lng: 30.31730,
-  },
-  {
-    title: 'Шаверма',
-    lat: 59.96783,
-    lng: 30.31258,
-  },
-  {
-    title: 'Франк',
-    lat: 59.95958,
-    lng: 30.30228,
-  },
-  {
-    title: 'Ginza',
-    lat: 59.97292,
-    lng: 30.31982,
-  },
-];
 
 // console.log(createCard);
 
