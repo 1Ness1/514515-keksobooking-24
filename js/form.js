@@ -1,10 +1,12 @@
+import {showErrorMessage, showSuccessMessage, sendData} from './load.js';
+import { createMarkers} from './map.js';
+import {offers} from './main.js';
 const mainForm = document.querySelector('.ad-form');
 const getFields = mainForm.querySelectorAll('.ad-form__element');
 const mapForm = document.querySelector('.map__filters');
 const inputs = mapForm.querySelector('.map__features');
 const form = document.querySelector('.ad-form');
 const formAddress = form.querySelector('#address');
-
 const formTitle = form.querySelector('#title');
 const formPrice = form.querySelector('#price');
 const selectCheckIn = form.querySelector('#timein');
@@ -13,17 +15,21 @@ const formRoomNumber = form.querySelector('#room_number');
 const formGuestNumber = form.querySelector('#capacity');
 const inputPrice = form.querySelector('#price');
 const selectType = form.querySelector('#type');
+const formReset = form.querySelector('.ad-form__reset');
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
 const MAX_PRICE_LENGTH = 1000000;
 
-function deactivateForm() {
-  // popup.classList.add('popup--disabled');
+function deactivateFilter( ) {
   mainForm.classList.add('ad-form--disabled');
   getFields.forEach((item) => {
     item.setAttribute('disabled', '');
   });
+}
+
+function deactivateForm() {
+  deactivateFilter();
   mapForm.classList.add('map__filter--disabled');
   for (const item of mapForm.children) {
     item.setAttribute('disabled', '');
@@ -33,12 +39,14 @@ function deactivateForm() {
   }
 }
 
-function activateForm() {
-  // popup.classList.remove('popup--disabled');
+function activateFilter() {
   mainForm.classList.remove('ad-form--disabled');
   getFields.forEach((item) => {
     item.removeAttribute('disabled', '');
   });
+}
+
+function activateForm() {
   mapForm.classList.remove('map__filter--disabled');
   for (const item of mapForm.children) {
     item.removeAttribute('disabled', '');
@@ -86,6 +94,19 @@ const setFormCapacity = () => {
     formGuestNumber.querySelector('option:not([disabled])').selected = true;
   }
 };
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  sendData(
+    showSuccessMessage,
+    showErrorMessage,
+    new FormData(evt.target));
+});
+
+formReset.addEventListener('click', (evt) => {
+  evt.preventDefault();
+  createMarkers(offers.slice(0, 10));
+});
 
 setFormCapacity();
 
@@ -151,5 +172,8 @@ selectCheckOut.addEventListener('change', onSelectCheckOutChange);
 export  {
   deactivateForm,
   activateForm,
-  formAddress
+  formAddress,
+  deactivateFilter,
+  activateFilter,
+  form
 };
