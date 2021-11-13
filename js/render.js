@@ -54,26 +54,7 @@ createCard.forEach((card) => {
   });
 });
 
+
 export {
   createCard
 };
-
-
-// console.log(createCard);
-
-// Array.from(createOffers, 5).forEach(({lon, lat}) => {
-//   const {lon, lat} = location
-//   const icon = L.icon({
-//     iconUrl: 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg',
-//     iconSize: [40, 40],
-//     iconAnchor: [20, 40],
-//   });
-//   const marker = L.marker({
-//     lot,
-//     lat,
-//   });
-
-//   marker.addTo(map);
-// });
-
-// mapCanvas.appendChild(cardElement);

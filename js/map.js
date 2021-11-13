@@ -24,8 +24,8 @@ const commonIcon = L.icon({
 
 const createMarker = (offer) => L.marker(
   {
-    lat: offer.location.lon,
-    lng: offer.location.lat,
+    lat: offer.location.lat,
+    lng: offer.location.lng,
   },
   {
     icon: commonIcon,
@@ -76,5 +76,6 @@ const initMap = (offers, onMapLoad) => {
 };
 
 export {
-  initMap
+  initMap,
+  createMarkers
 };

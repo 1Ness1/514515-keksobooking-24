@@ -34,8 +34,8 @@ const photos = [
 
 function createOffer() {
   const location = {
-    lon: getRandomCoordinate(35.65, 35.7, 5),
-    lat: getRandomCoordinate(139.7, 139.8, 5),
+    lat: getRandomCoordinate(35.65, 35.7, 5),
+    lng: getRandomCoordinate(139.7, 139.8, 5),
   };
 
   return {
