@@ -1,6 +1,4 @@
 import {showErrorMessage, showSuccessMessage, sendData} from './load.js';
-import { createMarkers} from './map.js';
-import {offers} from './main.js';
 const mainForm = document.querySelector('.ad-form');
 const getFields = mainForm.querySelectorAll('.ad-form__element');
 const mapForm = document.querySelector('.map__filters');
@@ -15,7 +13,6 @@ const formRoomNumber = form.querySelector('#room_number');
 const formGuestNumber = form.querySelector('#capacity');
 const inputPrice = form.querySelector('#price');
 const selectType = form.querySelector('#type');
-const formReset = form.querySelector('.ad-form__reset');
 
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
@@ -101,11 +98,6 @@ form.addEventListener('submit', (evt) => {
     showSuccessMessage,
     showErrorMessage,
     new FormData(evt.target));
-});
-
-formReset.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  createMarkers(offers.slice(0, 10));
 });
 
 setFormCapacity();

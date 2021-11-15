@@ -10,6 +10,7 @@ const ZOOM_LEVEL = 12;
 
 let map, markerGroup;
 
+
 const mainPinIcon = L.icon({
   iconUrl: 'img/main-pin.svg',
   iconSize: [52,52],
@@ -22,20 +23,6 @@ const commonIcon = L.icon({
   iconAnchor: [20, 40],
 });
 
-const createMarker = (offer) => L.marker(
-  {
-    lat: offer.location.lat,
-    lng: offer.location.lng,
-  },
-  {
-    icon: commonIcon,
-  },
-).addTo(markerGroup)
-  .bindPopup(((createOfferCard(offer))),
-    { keepInView: true },
-  );
-
-
 const mainPinMarker = L.marker(
   {
     lat: 35.67555,
@@ -46,11 +33,6 @@ const mainPinMarker = L.marker(
     icon: mainPinIcon,
   },
 );
-
-const createMarkers = (offers) => {
-  markerGroup.clearLayers();
-  offers.forEach(createMarker);
-};
 
 const initMap = (offers, onMapLoad) => {
   map = L.map(mapCanvas)
@@ -72,7 +54,26 @@ const initMap = (offers, onMapLoad) => {
   });
 
   markerGroup = L.layerGroup().addTo(map);
-  createMarkers(offers);
+};
+
+
+const createMarker = (offer) => L.marker(
+  {
+    lat: offer.location.lat,
+    lng: offer.location.lng,
+  },
+  {
+    icon: commonIcon,
+  },
+).addTo(markerGroup)
+  .bindPopup(((createOfferCard(offer))),
+    { keepInView: true },
+  );
+
+
+const createMarkers = (offers) => {
+  markerGroup.clearLayers();
+  offers.forEach(createMarker);
 };
 
 export {

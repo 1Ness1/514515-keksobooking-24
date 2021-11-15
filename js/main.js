@@ -1,11 +1,11 @@
-import { createOffers } from './data.js';
 import {activateForm, deactivateForm, activateFilter} from './form.js';
 import {initMap, createMarkers } from './map.js';
 import {filterOffers, initFilter} from './filter.js';
 import {getData} from './load.js';
 import {changePriview} from './preview.js';
 
-let offers = createOffers(5);
+const DEBOUNCE_DELAY = 500;
+let offers;
 
 const setOffers = (data) => {
   offers = data;
@@ -20,7 +20,7 @@ getData ((data) => {
 
 deactivateForm();
 
-const debugging =  (callback, delay = 500) => {
+const debounce =  (callback, delay = DEBOUNCE_DELAY) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
@@ -28,7 +28,7 @@ const debugging =  (callback, delay = 500) => {
   };
 };
 
-const mapFilter = debugging(() => {
+const mapFilter = debounce(() => {
   const filteredOffers = filterOffers(offers);
   const newFilteredOffers = filteredOffers.slice(0, 5);
   createMarkers(newFilteredOffers);

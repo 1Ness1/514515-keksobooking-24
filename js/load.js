@@ -77,19 +77,19 @@ const getData = (success) => {
     .catch(() => showServerError());
 };
 
-const sendData = (success, fail, body) => {
+const sendData = (onSuccess, onFail, body) => {
   fetch(DATA_SERVER_POST,
     {method: 'POST',
       body},
   )
     .then((response) => {
       if (response.ok) {
-        success(showSuccessMessage);
+        onSuccess(showSuccessMessage);
       } else {
-        fail(showErrorMessage);
+        onFail(showErrorMessage);
       }
     })
-    .catch(() => fail());
+    .catch(() => onFail());
 };
 
 export { getData, sendData, showErrorMessage, showSuccessMessage};

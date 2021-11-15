@@ -1,3 +1,4 @@
+
 const PHOTO_WIDTH = 45;
 const PHOTO_HEIGHT = 40;
 
