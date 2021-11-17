@@ -1,3 +1,5 @@
+import { form } from './form.js';
+import { previewAvatar, previewImage } from './preview.js';
 const DATA_SERVER_GET = 'https://24.javascript.pages.academy/keksobooking/data';
 const DATA_SERVER_POST = 'https://24.javascript.pages.academy/keksobooking';
 
@@ -85,6 +87,9 @@ const sendData = (onSuccess, onFail, body) => {
     .then((response) => {
       if (response.ok) {
         onSuccess(showSuccessMessage);
+        form.reset();
+        previewAvatar.src = 'img/muffin-grey.svg';
+        previewImage.innerHTML = '';
       } else {
         onFail(showErrorMessage);
       }

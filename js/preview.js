@@ -1,9 +1,11 @@
-import {form} from './form.js';
 const IMAGE_TYPES = ['jpg','jpeg','png','svg', 'gif'];
-const preview = form.querySelector('#avatar');
-const image = form.querySelector('#images');
+const preview = document.querySelector('#avatar');
+const image = document.querySelector('#images');
 const previewAvatar = document.querySelector('.ad-form-header__preview img');
 const previewImage = document.querySelector('.ad-form__photo');
+const resetButton = document.querySelector('.ad-form__reset');
+
+
 const changePriview = () => {
   preview.addEventListener('change', () => {
     const changeImage = preview.files[0];
@@ -13,6 +15,12 @@ const changePriview = () => {
       previewAvatar.src = URL.createObjectURL(changeImage);
     }
   });
+
+  resetButton.addEventListener('click', () => {
+    previewAvatar.src = 'img/muffin-grey.svg';
+    previewImage.innerHTML = '';
+  });
+
   image.addEventListener('change', () => {
     const fileImage = image.files[0];
     const fileNameImage = fileImage.name.toLowerCase();
@@ -28,5 +36,5 @@ const changePriview = () => {
   });
 };
 
-export {changePriview};
+export {changePriview, previewAvatar, previewImage};
 

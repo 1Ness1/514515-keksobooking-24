@@ -28,11 +28,8 @@ function deactivateFilter( ) {
 function deactivateForm() {
   deactivateFilter();
   mapForm.classList.add('map__filter--disabled');
-  for (const item of mapForm.children) {
+  for (const item of [...mapForm.children, ...inputs.children]) {
     item.setAttribute('disabled', '');
-  }
-  for (const input of inputs.children) {
-    input.setAttribute('disabled', '');
   }
 }
 
@@ -45,11 +42,8 @@ function activateFilter() {
 
 function activateForm() {
   mapForm.classList.remove('map__filter--disabled');
-  for (const item of mapForm.children) {
+  for (const item of [...mapForm.children, ...inputs.children]) {
     item.removeAttribute('disabled', '');
-  }
-  for (const input of inputs.children) {
-    input.removeAttribute('disabled', '');
   }
 }
 

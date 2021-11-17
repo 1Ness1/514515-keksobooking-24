@@ -78,5 +78,7 @@ const createMarkers = (offers) => {
 
 export {
   initMap,
-  createMarkers
+  map,
+  createMarkers,
+  tokyoCoordinates
 };

@@ -11,6 +11,9 @@ const setOffers = (data) => {
   offers = data;
 };
 
+changePriview();
+
+
 getData ((data) => {
   offers = data;
   createMarkers(offers.slice(0, 5));
@@ -19,6 +22,11 @@ getData ((data) => {
 });
 
 deactivateForm();
+
+initMap(offers, () => {
+  activateForm(offers);
+});
+
 
 const debounce =  (callback, delay = DEBOUNCE_DELAY) => {
   let timeoutId;
@@ -36,10 +44,5 @@ const mapFilter = debounce(() => {
 
 initFilter(mapFilter);
 
-initMap(offers, () => {
-  activateForm();
-});
-
-changePriview();
 
 export {offers};
